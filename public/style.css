@@ -1,0 +1,16 @@
+
+.logo{
+    width: 45px;
+    height: 45px;
+}
+
+.header .row{
+    display: inline-block;
+}
+
+.header .logo{
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    padding-left: 5px;
+}
