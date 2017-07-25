@@ -1,5 +1,5 @@
 var assign = require('object-assign');
-var eventEmitterProto = require('event').EventEmitter.prototype;
+var eventEmitterProto = require('events').EventEmitter.prototype;
 
 var storeMethods = {
     init: function(){},
@@ -8,6 +8,9 @@ var storeMethods = {
         arr.filter(function(item){
             return currIds.indexOf(item.cid);
         }).forEach(this.add.bind(this));
+
+        console.log('Data Set');
+        console.log(this._data);
     },
     add: function(item){
         this._data.push(item);
@@ -42,18 +45,18 @@ var storeMethods = {
 exports.extend = function(methods){
     var store = {
         _data: [],
-        actions = {}
+        actions: {}
     };
     assign(store, eventEmitterProto, storeMethods, methods);
     store.init();
 
-    require('../dispatcher').register(function(){
+    require('../dispatcher').register(function(action){
         if (store.actions[action.actionType]){
             store.actions[action.actionType].forEach(function(fn){
-                fn.call(null, action.data);
+                fn.call(store, action.data);
             });
         }
     });
-    
+
     return store;
 };
