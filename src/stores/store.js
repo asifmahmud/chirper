@@ -10,7 +10,7 @@ var storeMethods = {
         }).forEach(this.add.bind(this));
 
         console.log('Data Set');
-        console.log(this._data);
+        console.log(this._data);  
     },
     add: function(item){
         this._data.push(item);
