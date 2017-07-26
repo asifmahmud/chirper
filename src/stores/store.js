@@ -1,5 +1,6 @@
 var assign = require('object-assign');
 var eventEmitterProto = require('events').EventEmitter.prototype;
+var CHANGE_EVENT = 'CHANGE';
 
 var storeMethods = {
     init: function(){},
@@ -10,7 +11,7 @@ var storeMethods = {
         }).forEach(this.add.bind(this));
 
         console.log('Data Set');
-        console.log(this._data);  
+        console.log(this._data);
     },
     add: function(item){
         this._data.push(item);
@@ -54,6 +55,7 @@ exports.extend = function(methods){
         if (store.actions[action.actionType]){
             store.actions[action.actionType].forEach(function(fn){
                 fn.call(store, action.data);
+                store.emitChange();
             });
         }
     });
