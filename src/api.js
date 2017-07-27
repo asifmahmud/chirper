@@ -6,6 +6,9 @@ var api = module.exports = {
     fetchChirps: function(){
         get('/api/chirps').then(actions.gotChirps.bind(actions));
     },
+    fetchUsers: function(){
+        get('/api/users').then(actions.gotUsers.bind(actions));
+    },
     saveChirp: function(text){
         text = text.trim();
         if (text === '') return;
