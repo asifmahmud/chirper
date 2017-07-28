@@ -1,6 +1,6 @@
 var constants = require('../constants');
 
-var userStore = module.exports = require('./store').extend({
+var UserStore = module.exports = require('./store').extend({
     init: function(){
         this.bind(constants.GOT_USERS, this.set);
         this.bind(constants.FOLLOWED, this.updateUser);

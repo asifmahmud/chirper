@@ -10,19 +10,27 @@ var storeMethods = {
             return currIds.indexOf(item.cid);
         }).forEach(this.add.bind(this));
 
-        console.log('Data Set');
-        console.log(this._data);
+        this.sort();
+        //console.log('Data Set');
+        //console.log(this._data);
     },
     add: function(item){
         this._data.push(item);
+        this.sort();
     },
     all: function(){
         return this._data;
     },
     get: function(id){
+        //console.log(this._data);
         return this._data.filter(function(item){
             return item.cid === id;
         })[0];
+    },
+    sort: function(){
+        this._data.sort(function(a, b){
+            return +new Date(b.$created) - +new Date(a.$created);
+        });
     },
     addChangeListener: function(fn){
         this.on(CHANGE_EVENT, fn);
