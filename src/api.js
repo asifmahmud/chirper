@@ -13,6 +13,12 @@ var api = module.exports = {
         text = text.trim();
         if (text === '') return;
         post('/api/chirps', {text: text}).then(actions.chirped.bind(actions));
+    },
+    follow: function(id){
+        post('/api/follow/' + id).then(actions.followed.bind(actions));
+    },
+    unfollow: function(id){
+        post('/api/unfollow/' + id).then(actions.unfollowed.bind(actions));
     }
 };
 
@@ -42,6 +48,12 @@ dispatcher.register(function(action){
     switch(action.actionType){
         case constants.CHIRP:
             api.saveChirp(action.data);
+            break;
+        case constants.FOLLOW:
+            api.follow(action.data);
+            break;
+        case constants.UNFOLLOW:
+            api.unfollow(action.data);
             break;
     }
 })
