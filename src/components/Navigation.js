@@ -1,6 +1,6 @@
-var React = require('react');
-var Link = require('react-router').Link;
-var UserStore = require('../stores/users');
+var React       = require('react');
+var Link        = require('react-router').Link;
+var UserStore   = require('../stores/users');
 
 var Navigation = module.exports = React.createClass({
     getInitialState: function(){

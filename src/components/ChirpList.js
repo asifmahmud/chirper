@@ -1,7 +1,7 @@
-var React = require('react');
-var Box = require('./ChirpBox');
-var Moment = require('moment');
-var UserStore = require('../stores/users');
+var React       = require('react');
+var Box         = require('./ChirpBox');
+var Moment      = require('moment');
+var UserStore   = require('../stores/users');
 
 var ChirpList = React.createClass({
     render: function(){

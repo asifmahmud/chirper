@@ -1,6 +1,6 @@
-var actions = require('./actions');
-var dispatcher = require('./dispatcher');
-var constants = require('./constants');
+var actions     = require('./actions');
+var dispatcher  = require('./dispatcher');
+var constants   = require('./constants');
 
 var api = module.exports = {
     fetchChirps: function(){
