@@ -16,7 +16,7 @@ var UserList = module.exports = React.createClass({
         UserStore.addChangeListener(this.onChange);
     },
     componentWillUnmount: function(){
-        UserStore.removeChangeListener(this.onChange);
+        UserStore.addRemoveListener(this.onChange);
     },
     onChange: function(){
         this.setState(this.getInitialState());

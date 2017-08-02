@@ -28,8 +28,6 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "react": "^0.13.3",
-    "react-button": "^1.2.1",
-    "react-router": "^0.13.6",
-    "react-uikit-button": "^2.0.2"
+    "react-router": "^0.13.6"
   }
 }

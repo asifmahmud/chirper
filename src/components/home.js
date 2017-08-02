@@ -14,7 +14,7 @@ var Home = React.createClass({
         ChirpStore.addChangeListener(this.onChange);
     },
     componentWillUnmount: function(){
-        ChirpStore.removeChangeListener(this.onChange);
+        ChirpStore.addRemoveListener(this.onChange);
     },
     onChange: function(){
         this.setState(this.getInitialState());

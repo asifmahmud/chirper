@@ -1,12 +1,33 @@
 var React       = require('react');
 var actions     = require('../actions');
 var UserStore   = require('../stores/users');
-var Button      = require('react-button');
 
 var FollowButton = module.exports = React.createClass({
+    getInitialState: function(){
+        return {
+            id: UserStore.currentUser.cid,
+            currentlyFollowing: UserStore.currentUser.following,
+        };
+    },
+    componentDidMount: function(){
+        UserStore.addChangeListener(this.onChange);
+    },
+    componentWillUnmount: function(){
+        UserStore.addRemoveListener(this.onChange);
+    },
+    onChange: function(){
+        this.setState(this.getInitialState());
+    },
+    unfollow: function(){
+        actions.unfollow(this.props.userId);
+    },
+    follow: function(){
+        actions.follow(this.props.userId);
+    },
     render: function(){
+
         if (this.state.id === this.props.userId)
-            return <span> This is you! </span>;
+            return <span> </span>;
 
         var text, action;
         if (this.state.currentlyFollowing.indexOf(this.props.userId) > -1){
@@ -18,28 +39,7 @@ var FollowButton = module.exports = React.createClass({
             action = this.follow;
         }
 
-        return <Button className='button' theme='' onClick={action}> {text} </Button>;
+        return <button className='button' onClick={action}> {text} </button>;
 
-    },
-    getInitialState: function(){
-        return {
-            currentlyFollowing: UserStore.currentUser.following,
-            id: UserStore.currentUser.id
-        };
-    },
-    componentDidMount: function(){
-        UserStore.addChangeListener(this.onChange);
-    },
-    componentWillUnmount: function(){
-        UserStore.removeChangeListener(this.onChange);
-    },
-    onChange: function(){
-        this.setState(this.getInitialState());
-    },
-    unfollow: function(){
-        actions.unfollow(this.props.userId);
-    },
-    follow: function(){
-        actions.follow(this.props.userId);
     }
 });
