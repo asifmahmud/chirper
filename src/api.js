@@ -9,6 +9,14 @@ var api = module.exports = {
     fetchUsers: function(){
         get('/api/users').then(actions.gotUsers.bind(actions));
     },
+    startFetchingChirps: function(){
+        this.fetchChirps();
+        return setInterval(this.fetchChirps, 1000);
+    },
+    startFetchingUsers: function(){
+        this.fetchUsers();
+        return setInterval(this.fetchUsers, 5000);
+    },
     saveChirp: function(text){
         text = text.trim();
         if (text === '') return;

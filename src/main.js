@@ -10,9 +10,12 @@ var routes = (
         <Route name='user' path='/user/:id' handler={require('./components/UserProfile')} />
     </Route>
 );
+//API.fetchChirps();
+//API.fetchUsers();
 
-API.fetchChirps();
-API.fetchUsers();
+API.startFetchingChirps();
+API.startFetchingUsers();
+
 
 reactRouter.run(routes, reactRouter.HistoryLocation, function(Root){
     React.render(<Root />, document.getElementById('app'));

@@ -35,7 +35,7 @@ var storeMethods = {
     addChangeListener: function(fn){
         this.on(CHANGE_EVENT, fn);
     },
-    addRemoveListener: function(fn){
+    RemoveChangeListener: function(fn){
         this.removeListener(CHANGE_EVENT, fn);
     },
     emitChange: function(){
@@ -54,7 +54,15 @@ var storeMethods = {
 exports.extend = function(methods){
     var store = {
         _data: [],
-        actions: {}
+        actions: {},
+        mixin: {
+            componentDidMount: function(){
+                store.addChangeListener(this.onChange);
+            },
+            componentWillUnmount: function(){
+                store.RemoveChangeListener(this.onChange);
+            }
+        }
     };
     assign(store, eventEmitterProto, storeMethods, methods);
     store.init();

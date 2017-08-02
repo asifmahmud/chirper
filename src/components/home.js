@@ -10,12 +10,7 @@ var Home = React.createClass({
             chirps: ChirpStore.timeline()
         };
     },
-    componentDidMount: function(){
-        ChirpStore.addChangeListener(this.onChange);
-    },
-    componentWillUnmount: function(){
-        ChirpStore.addRemoveListener(this.onChange);
-    },
+    mixins: [ChirpStore.mixin],
     onChange: function(){
         this.setState(this.getInitialState());
     },

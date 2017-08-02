@@ -14,14 +14,7 @@ var UserProfile = module.exports = React.createClass({
             chirps: ChirpStore.byUserId(id)
         };
     },
-    componentDidMount: function(){
-        UserStore.addChangeListener(this.onChange);
-        ChirpStore.addChangeListener(this.onChange);
-    },
-    componentWillUnmount: function(){
-        UserStore.addChangeListener(this.onChange);
-        ChirpStore.addChangeListener(this.onChange);
-    },
+    mixina: [UserStore.mixin, ChirpStore.mixin],
     onChange: function(){
         this.setState(this.getInitialState());
     },
