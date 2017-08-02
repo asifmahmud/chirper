@@ -12,6 +12,7 @@
     display: none;
 }
 
+
 @media (min-width: 550px){
     .chirp img{
         display: block;
@@ -25,8 +26,8 @@
 }
 
 .logo{
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
 }
 
 .header .row{
@@ -36,6 +37,6 @@
 .header .logo{
     display: inline-block;
     position: absolute;
-    top: 6px;
+    top: 5px;
     padding-left: 6px;
 }

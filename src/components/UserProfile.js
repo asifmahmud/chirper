@@ -14,7 +14,7 @@ var UserProfile = module.exports = React.createClass({
             chirps: ChirpStore.byUserId(id)
         };
     },
-    mixina: [UserStore.mixin, ChirpStore.mixin],
+    mixins: [UserStore.mixin, ChirpStore.mixin],
     onChange: function(){
         this.setState(this.getInitialState());
     },
