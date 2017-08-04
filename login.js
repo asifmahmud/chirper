@@ -64,11 +64,13 @@ passport.deserializeUser(function(cid, done){
     done(null, users.get(cid));
 })
 
+
+// Create a Express Router instance
 var router = require('express').Router();
 var bodyParser = require('body-parser');
 
-router.use(bodyParser.urlencoded({extended: true}));
-router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({extended: true})); // Login Page
+router.use(bodyParser.json()); // API
 router.use(require('cookie-parser')());
 router.use(require('express-session')({
     secret: 'hfyrye5463ufhsiudhf764y3ywhf253r93rghfyaehf6t3',
@@ -76,7 +78,9 @@ router.use(require('express-session')({
     saveUninitialized: true
 }));
 
+
 router.use(passport.initialize());
+// Setup the Passport session, which will be using the express session package
 router.use(passport.session());
 
 router.get('/login', function(req, res){
