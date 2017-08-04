@@ -83,48 +83,66 @@ router.use(passport.initialize());
 // Setup the Passport session, which will be using the express session package
 router.use(passport.session());
 
+// Render the login template when users land in the login page
 router.get('/login', function(req, res){
     res.render('login');
 });
 
+// Handle sign up request
 router.post('/signup', function(req, res, next){
+    /* 
+    * Check the databse for duplicate username. 
+    * If the user does not already exist, create 
+    * the user object and store it into the collection.
+    */
     if (users.where({username: req.body.username}).items.length === 0){
         var user = {
             fullname: req.body.fullname,
             email: req.body.email,
             username: req.body.username,
             passwordHash: hash(req.body.password),
+            // The 'following' array will be used to store users that 
+            // this user is following.
             following: []
         };
         var userId = users.insert(user);
+        // Redirect user to the home page
         req.login(users.get(userId), function(err){
             if (err) return next(err);
             res.redirect('/');
         })
     }
+    // redirect to login page if username already exists
     else {
         res.redirect('/login');
     }
 });
 
+// Handle login request. Redirect to login page if login fails.
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
 }));
 
-
+// Handle logout request. Redirect to login page
 router.get('/logout', function(req, res){
     req.logout();
     res.redirect('/login');
 })
 
+
+/*
+* ----------------------------------------------------
+* Ensure certain parts of the application is accesible 
+* only when the user is logged in. If the user is not
+* logged in, he is redirected to the login page.
+* ----------------------------------------------------
+*/ 
 function loginRequired(req, res, next){
     if (req.isAuthenticated()){
-        //console.log('User is authenticated');
         next();
     }
     else{
-        //console.log('User is not authenticated');
         res.redirect('/login');
     }
 }
