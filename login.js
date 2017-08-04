@@ -1,18 +1,44 @@
+/* 
+* ----------------------------------------------------
+* Passport
+* ----------------------------------------------------
+* Passport is an authentication middleware for 
+* Node.js. This app uses the Passport local 
+* authentication strategy by storing user accounts
+* locally.
+* 
+*/
+
+
+
 var passport        = require('passport');
 var localStrategy   = require('passport-local');
 var locallyDB       = require('locallydb');
 var crypto          = require('crypto');
 
+// Creating a new locallyDB database instance and storing it in '.data' folder
 var db = new locallyDB('./.data');
+
+// Creating a new database collection named "users"
 var users = db.collection('users');
 
+// Creating a sha512 hash of the password by using the crypto library
 function hash(password){
     return crypto.createHash('sha512').update(password).digest('hex');
 }
 
+
+/*
+* ----------------------------------------------------
+* Configure Passport to use the local strategy by 
+* passing it a new localStrategy object. The callback
+* function will be used to log the user into the system 
+* if username and password match.
+* ----------------------------------------------------
+*/
 passport.use(new localStrategy(function(username, password, done){
     var user = users.where({username: username, passwordHash: hash(password)}).items[0];
-
+    
     if (user){
         done(null, user);
     }
@@ -21,10 +47,19 @@ passport.use(new localStrategy(function(username, password, done){
     }
 }));
 
+
+/*
+* ----------------------------------------------------
+* serializeUser determines which data of the user 
+* object should be stored in the session. In this case,
+* it uses the user's cid.
+* ----------------------------------------------------
+*/ 
 passport.serializeUser(function(user, done){
     done(null, user.cid);
 })
 
+// Convert the user back into a full object by using the cid
 passport.deserializeUser(function(cid, done){
     done(null, users.get(cid));
 })
