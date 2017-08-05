@@ -147,6 +147,7 @@ function loginRequired(req, res, next){
     }
 }
 
+// Filter out the password hash when sending the user JSON to the client
 function makeUserSafe(user){
     var safeUser = {};
     var safeKeys = ['cid', 'fullname', 'email', 'username', 'following'];
