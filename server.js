@@ -20,7 +20,7 @@ express()
     * use the ejs templating system
     * ----------------------------------------------------
     */
-    .set('view engine', 'ejs') /
+    .set('view engine', 'ejs')
     .use(express.static('./public'))
     .use(login.routes)
     .use(chirps)
