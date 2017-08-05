@@ -7,7 +7,7 @@ var storeMethods = {
     set: function(arr){
         var currIds = this._data.map(function(m){return m.cid;});
         arr.filter(function(item){
-            return currIds.indexOf(item.cid);
+            return currIds.indexOf(item.cid) === -1;
         }).forEach(this.add.bind(this));
 
         this.sort();
