@@ -3,6 +3,7 @@ var reactRouter     = require('react-router');
 var Route           = reactRouter.Route;
 var API             = require('./api');
 
+// Contains the various routes used throughout the app
 var routes = (
     <Route handler={require('./components/App')}>
         <Route name='home' path='/' handler={require('./components/home')} />

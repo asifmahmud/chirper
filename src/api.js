@@ -3,16 +3,23 @@ var dispatcher  = require('./dispatcher');
 var constants   = require('./constants');
 
 var api = module.exports = {
+    // Go the server and get the chirps from the API
     fetchChirps: function(){
         get('/api/chirps').then(actions.gotChirps.bind(actions));
     },
+
+    // Go the server and get the users from the API
     fetchUsers: function(){
         get('/api/users').then(actions.gotUsers.bind(actions));
     },
+
+    // Continously poll the server after a set amount of time and fetch chirps
     startFetchingChirps: function(){
         this.fetchChirps();
         return setInterval(this.fetchChirps, 1000);
     },
+
+    // Continously poll the server after a set amount of time and fetch users
     startFetchingUsers: function(){
         this.fetchUsers();
         return setInterval(this.fetchUsers, 5000);
