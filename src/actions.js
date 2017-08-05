@@ -1,3 +1,11 @@
+/* 
+* ----------------------------------------------------
+* This module handles the actions received 
+* from the view and dispatches them to the dispatcher
+* ----------------------------------------------------
+*/
+
+
 var dispatcher = require('./dispatcher');
 var constants  = require('./constants');
 

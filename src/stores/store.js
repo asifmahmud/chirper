@@ -1,18 +1,25 @@
+/*
+* ----------------------------------------------------
+* The stores module is used to store the data being 
+* used by the front-end of the application. 
+*  ---------------------------------------------------
+*/
+
+
 var assign = require('object-assign');
 var eventEmitterProto = require('events').EventEmitter.prototype;
 var CHANGE_EVENT = 'CHANGE';
 
 var storeMethods = {
     init: function(){},
+    
+    // Prevent duplicate items from being added to the data array
     set: function(arr){
         var currIds = this._data.map(function(m){return m.cid;});
         arr.filter(function(item){
             return currIds.indexOf(item.cid) === -1;
         }).forEach(this.add.bind(this));
-
         this.sort();
-        //console.log('Data Set');
-        //console.log(this._data);
     },
     add: function(item){
         this._data.push(item);
