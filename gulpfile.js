@@ -1,12 +1,3 @@
-/*
-* ----------------------------------------------------
-* Gulp and Browserify
-* ----------------------------------------------------
-* Gulp is used to automate the build process
-* along with Browserify, which allows you to use
-* modules and 'require' statements in the browser.
-*
-*/
 
 var gulp        = require('gulp');
 var browserify  = require('gulp-browserify');
