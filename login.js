@@ -1,15 +1,3 @@
-/* 
-* ----------------------------------------------------
-* Passport
-* ----------------------------------------------------
-* Passport is an authentication middleware for 
-* Node.js. This app uses the Passport local 
-* authentication strategy by storing user accounts
-* locally.
-* 
-*/
-
-
 
 var passport        = require('passport');
 var localStrategy   = require('passport-local');
