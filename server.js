@@ -1,13 +1,3 @@
-/*
-* ----------------------------------------------------
-* Express
-* ----------------------------------------------------
-* Express is a web application framework for Node.js.
-* It is used to handle server-side operations, routing,
-* browser sessions etc. For more information, visit:
-* https://github.com/expressjs/express
-*
-*/
 
 var express = require('express');
 var login   = require('./login');
