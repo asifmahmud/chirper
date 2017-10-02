@@ -6,10 +6,6 @@ Chirper is a microblogging web app (similar to Twitter) where users can share th
 	git clone https://github.com/asifmahmud/chirper.git
 	cd chirper
 
-Chirper uses LocallyDB for data storage. Make sure to create a ".data" folder in the root directory.
-
-	mkdir .data
-
 Install necessary npm modules and build
 
 	npm install
