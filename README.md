@@ -12,6 +12,6 @@ Install necessary npm modules and build
 
 Start the app by executing
 
-	nodejs server.js
+	node server.js
 
 The app can be accesed from localhost:3000
