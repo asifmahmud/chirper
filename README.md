@@ -1,6 +1,6 @@
 # What is Chirper?
 
-Chirper is a microblogging web app (similar to Twitter) where users can share their thoughts through "chirps". Users can follow other users and view their profiles as well. It is built with the Flux application architecture along with React. 
+Chirper is a microblogging web app (similar to Twitter) where users can share their thoughts through "chirps". Users can follow other users and view their profiles as well. Built with Node.js and React/Flux. Hosted on AWS EC2. 
 
 [App Demo](http://ec2-52-53-169-245.us-west-1.compute.amazonaws.com:3000)
 
