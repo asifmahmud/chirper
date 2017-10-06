@@ -4,6 +4,12 @@ Chirper is a microblogging web app (similar to Twitter) where users can share th
 
 [App Demo](http://ec2-52-53-169-245.us-west-1.compute.amazonaws.com:3000)
 
+# Technologies Used
+* [Node.js](https://github.com/nodejs/node)
+* [express.js](https://github.com/expressjs/express)
+* [Passport](https://github.com/jaredhanson/passport)
+
+
 # Installation
 	git clone https://github.com/asifmahmud/chirper.git
 	cd chirper
