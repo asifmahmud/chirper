@@ -21,7 +21,9 @@ var ChirpBox = React.createClass({
                 </Link>
                 <div className='ten columns'>
                     <p>
-                        <strong> {user.fullname} </strong>
+                        <Link to='user' params={{id:id}}>
+                            <strong> {user.fullname} </strong>
+                        </Link>
                         <span className='timestamp'>
                             @{user.username} {timestamp}
                         </span>
